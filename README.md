@@ -1,3 +1,1 @@
-# mockProject
-
-Testing push jh123
+# mockProject - CharityFinderApp
