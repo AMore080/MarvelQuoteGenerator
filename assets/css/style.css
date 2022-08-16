@@ -6,11 +6,13 @@ body {
     background-size: cover;
     background-position-y: center;
     height: 100vh;
-}
+    font-family: 'Montserrat', sans-serif;
+    }
  p {
+    width: 60%;
     flex-direction: row;
     color: white;
-    font-size: 50pt;
+    font-size: 4rem;
  }
 .card {
     flex-direction: column;
