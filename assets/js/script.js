@@ -42,9 +42,9 @@ function handleRandomGif(speaker){
       })
       .then(function(data){
         console.log(data);
-        let randomGif = document.createElement("iframe");
+        let randomGif = document.createElement("img");
         console.log(data.bitly_gif_url);
-        randomGif.setAttribute("src", data.data.embed_url);
+        randomGif.setAttribute("src", data.data.images.original.url);
         console.log(randomGif)
         gif.appendChild(randomGif);
       })
