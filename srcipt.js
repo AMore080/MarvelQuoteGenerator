@@ -2,6 +2,7 @@ var quoteEl = document.getElementById("quoteTextEl");
 var button = document.querySelector("btn");
 var quoteText = {};
 let gif = document.querySelector("#gif")
+let searchCharacter = document.getElementById("search-character");
 
 
 var renderQuote = function () {
@@ -29,7 +30,10 @@ var renderQuote = function () {
     .catch((err) => console.error(err));
 };
 
-
+searchCharacter.addEventListener('keyup', function(e){
+ let Speaker = e.target.value
+ if (searchCharacter === Speaker  
+}
 
 
 function handleRandomGif(speaker){
@@ -42,9 +46,9 @@ function handleRandomGif(speaker){
       })
       .then(function(data){
         console.log(data);
-        let randomGif = document.createElement("iframe");
+        let randomGif = document.createElement("img");
         console.log(data.bitly_gif_url);
-        randomGif.setAttribute("src", data.data.embed_url);
+        randomGif.setAttribute("src", data.data.images.original.url);
         console.log(randomGif)
         gif.appendChild(randomGif);
       })
