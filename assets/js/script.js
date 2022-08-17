@@ -22,9 +22,10 @@ var renderQuote = function () {
       var attribution = document.createElement("h3");
       attribution.classList.add("place-content-end");
       attribution.textContent = " -" + data.Speaker;
-      console.log(data.Speaker)
+      console.log(JSON.stringify(data.Speaker + "marvel"))
       quoteEl.append(attribution);
-      handleRandomGif(data.speaker)
+      speaker = JSON.stringify(data.Speaker + " marvel")
+      handleRandomGif()
     })
     .catch((err) => console.error(err));
 };
@@ -32,24 +33,28 @@ var renderQuote = function () {
 
 
 
-function handleRandomGif(speaker){
+function handleRandomGif(){
+  let speak = speaker
   
-  let giphyAPI = "https://api.giphy.com/v1/gifs/random?api_key=tgs71BTlLJyX02wBBfoRfToFipaRcp8R&tag=" + speaker + "&rating=g"
-  fetch(giphyAPI).then(function (response){
-    if(response.ok){
-      response.json().then(function (data){
-        return data;
-      })
-      .then(function(data){
-        console.log(data);
-        let randomGif = document.createElement("img");
-        console.log(data.bitly_gif_url);
-        randomGif.setAttribute("src", data.data.images.original.url);
-        console.log(randomGif)
-        gif.appendChild(randomGif);
-      })
-    }
-  })
+  console.log(speak)
+
+  let giphyAPI = "https://api.giphy.com/v1/gifs/random?api_key=tgs71BTlLJyX02wBBfoRfToFipaRcp8R&tag=" + speak + "&rating=g"
+  console.log(giphyAPI)
+    fetch(giphyAPI).then(function (response){
+      if(response.ok){
+        response.json().then(function (data){
+          return data;
+        })
+        .then(function(data){
+          console.log(data);
+          let randomGif = document.createElement("img");
+          console.log(data.bitly_gif_url);
+          randomGif.setAttribute("src", data.data.images.original.url);
+          console.log(randomGif)
+          gif.appendChild(randomGif);
+        })
+      }
+    })
 
   
 
