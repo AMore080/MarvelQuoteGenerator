@@ -14,7 +14,8 @@ body {
     width: 60%;
     flex-direction: row;
     color: white;
-    font-size: 4rem;
+    font-size: 2rem;
+    font-weight: bolder;
  }
 .card {
     flex-direction: column;
