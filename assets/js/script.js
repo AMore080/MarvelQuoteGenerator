@@ -19,6 +19,8 @@ var renderQuote = function () {
     .then((data) => {
       console.log(data);
       quoteEl.text(data.Quote);
+      console.log(quoteEl);
+      localStorage.setItem("savedQuote", quoteEl[0].innerText);
       quoteEl.addClass("mx-8 draggable");
       $(function () {
         $(".draggable").draggable();
