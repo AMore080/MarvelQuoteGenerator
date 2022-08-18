@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-image: url(https://source.unsplash.com/random/1920X1080/?black,dark,night,storms&orientation=landscape);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    backdrop-filter: blur(8px);
+    }
+
+ p {
+    width: 60%;
+    flex-direction: row;
+    color: white;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.card {
+    flex-direction: column;
+}
