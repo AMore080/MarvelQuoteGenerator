@@ -24,7 +24,7 @@ var renderQuote = function () {
       attribution.textContent = " -" + data.Speaker;
       console.log(JSON.stringify(data.Speaker + "marvel"))
       quoteEl.append(attribution);
-      speaker = JSON.stringify(data.Speaker + " marvel")
+      speaker = JSON.stringify(data.Speaker).split(" ")
       handleRandomGif()
     })
     .catch((err) => console.error(err));
