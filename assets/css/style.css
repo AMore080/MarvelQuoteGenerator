@@ -1,13 +1,15 @@
 body {
     display: flex;
     flex-direction: column;
-    background-image: url(https://source.unsplash.com/random/1920X1080/?night,storms&orientation=landscape);
+    background-image: url(https://source.unsplash.com/random/1920X1080/?night,storms,dark&orientation=landscape);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: center;
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
+    backdrop-filter: blur(8px);
     }
+
  p {
     width: 60%;
     flex-direction: row;
