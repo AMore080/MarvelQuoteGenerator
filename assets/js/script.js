@@ -1,9 +1,8 @@
-var quoteEl = document.getElementById("quoteTextEl");
-var quoteEl = $(quoteEl);
-
+var quoteEl = $(quoteTextEl);
 var button = document.querySelector("btn");
 var quoteText = {};
-let gif = document.querySelector("#gif");
+let gif = document.querySelector("#gif")
+
 
 var renderQuote = function () {
   var options = {
@@ -19,50 +18,47 @@ var renderQuote = function () {
     .then((data) => {
       console.log(data);
       quoteEl.text(data.Quote);
-      console.log(quoteEl);
-      localStorage.setItem("savedQuote", quoteEl[0].innerText);
       quoteEl.addClass("mx-8 draggable");
-      $(function () {
-        $(".draggable").draggable();
-      });
+      $( function() {
+        $( ".draggable").draggable();
+      } );
       var attribution = document.createElement("h3");
       attribution.classList.add("place-content-end");
       attribution.textContent = " -" + data.Speaker;
-      console.log(JSON.stringify(data.Speaker + "marvel"));
+      console.log(JSON.stringify(data.Speaker + "marvel"))
       quoteEl.append(attribution);
-      speaker = JSON.stringify(data.Speaker + " marvel");
+      speaker = JSON.stringify(data.Speaker).split(" ");
+      console.log(quoteEl);
+      localStorage.setItem("savedQuote", quoteEl[0].innerText);
       handleRandomGif();
     })
     .catch((err) => console.error(err));
 };
 
-function handleRandomGif() {
-  let speak = speaker;
 
-  console.log(speak);
 
-  let giphyAPI =
-    "https://api.giphy.com/v1/gifs/random?api_key=tgs71BTlLJyX02wBBfoRfToFipaRcp8R&tag=" +
-    speak +
-    "&rating=g";
-  console.log(giphyAPI);
-  fetch(giphyAPI).then(function (response) {
-    if (response.ok) {
-      response
-        .json()
-        .then(function (data) {
+function handleRandomGif(){
+  let speak = speaker
+  
+  console.log(speak)
+
+  let giphyAPI = "https://api.giphy.com/v1/gifs/random?api_key=tgs71BTlLJyX02wBBfoRfToFipaRcp8R&tag=" + speak + "&rating=pg"
+  console.log(giphyAPI)
+    fetch(giphyAPI).then(function (response){
+      if(response.ok){
+        response.json().then(function (data){
           return data;
         })
-        .then(function (data) {
+        .then(function(data){
           console.log(data);
           let randomGif = document.createElement("img");
-          console.log(data.bitly_gif_url);
           randomGif.setAttribute("src", data.data.images.original.url);
-          console.log(randomGif);
+          console.log(randomGif)
           gif.appendChild(randomGif);
-        });
-    }
-  });
+        })
+      }
+    })
+
 }
 
 renderQuote();

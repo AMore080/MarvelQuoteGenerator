@@ -7,13 +7,17 @@ body {
     background-position-y: center;
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
+    backdrop-filter: blur(8px);
     }
+
  p {
     width: 60%;
     flex-direction: row;
     color: white;
-    font-size: 4rem;
- }
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
 .card {
     flex-direction: column;
 }
