@@ -62,3 +62,8 @@ function handleRandomGif(){
 }
 
 renderQuote();
+
+//Refresh button
+function refresh(){
+  window.location.reload("Refresh")
+}
