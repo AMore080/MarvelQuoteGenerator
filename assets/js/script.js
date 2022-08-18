@@ -28,11 +28,12 @@ var renderQuote = function () {
       console.log(JSON.stringify(data.Speaker + "marvel"))
       quoteEl.append(attribution);
       speaker = JSON.stringify(data.Speaker).split(" ");
-      handleRandomGif()
+      console.log(quoteEl);
+      localStorage.setItem("savedQuote", quoteEl[0].innerText);
+      handleRandomGif();
     })
     .catch((err) => console.error(err));
 };
-
 
 
 
@@ -57,6 +58,7 @@ function handleRandomGif(){
         })
       }
     })
+
 }
 
 renderQuote();
