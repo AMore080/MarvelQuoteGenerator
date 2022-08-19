@@ -2,6 +2,7 @@ var quoteEl = $(quoteTextEl);
 var button = document.querySelector("btn");
 var quoteText = {};
 let gif = document.querySelector("#gif")
+let movieCover = document.querySelector(".movie-cover")
 
 
 var renderQuote = function () {
@@ -31,6 +32,8 @@ var renderQuote = function () {
       console.log(quoteEl);
       localStorage.setItem("savedQuote", quoteEl[0].innerText);
       handleRandomGif();
+      title = JSON.stringify(data.Title);
+      displayMovies();
     })
     .catch((err) => console.error(err));
 };
@@ -41,6 +44,8 @@ function handleRandomGif(){
   let speak = speaker
   
   console.log(speak)
+
+  
 
   let giphyAPI = "https://api.giphy.com/v1/gifs/random?api_key=tgs71BTlLJyX02wBBfoRfToFipaRcp8R&tag=" + speak + "&rating=pg"
   console.log(giphyAPI)
@@ -55,6 +60,33 @@ function handleRandomGif(){
           randomGif.setAttribute("src", data.data.images.original.url);
           console.log(randomGif)
           gif.appendChild(randomGif);
+        })
+      }
+    })
+}
+
+
+function displayMovies(){
+  let speak = title
+  speak.replaceAll('"', '')
+  console.log(speak);
+  console.log(speak.split(" ").join("%20").split(":").join("%3A"))
+  const moviesAPI = "https://mcuapi.herokuapp.com/api/v1/movies?page=1&limit=10&columns=title%2Crelease_date%2Ccover_url&order=chronology%2CDESC&filter=title%3D" + speak.replaceAll('"', '').split(" ").join("%20").split(":").join("%3A");
+
+
+  console.log(moviesAPI)
+    
+    fetch(moviesAPI).then(function (response){
+      if(response.ok){
+        response.json().then(function (data){
+          return data;
+        })
+        .then(function (data){
+          console.log(data);
+          let movieArt = document.createElement("img");
+          movieArt.setAttribute("src", data.data[0].cover_url)
+          console.log(data.data.title)
+          movieCover.appendChild(movieArt)
         })
       }
     })
