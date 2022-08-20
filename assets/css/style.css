@@ -5,7 +5,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: center;
-    height: 100vh;
     font-family: 'Montserrat', sans-serif;
     backdrop-filter: blur(8px);
     }
