@@ -34,6 +34,7 @@ var renderQuote = function () {
       handleRandomGif();
       title = JSON.stringify(data.Title);
       displayMovies();
+      displayShows();
     })
     .catch((err) => console.error(err));
 };
@@ -71,7 +72,36 @@ function displayMovies(){
   speak.replaceAll('"', '')
   console.log(speak);
   console.log(speak.split(" ").join("%20").split(":").join("%3A"))
-  const moviesAPI = "https://mcuapi.herokuapp.com/api/v1/movies?page=1&limit=10&columns=title%2Crelease_date%2Ccover_url&order=chronology%2CDESC&filter=title%3D" + speak.replaceAll('"', '').split(" ").join("%20").split(":").join("%3A");
+  const moviesAPI = "https://mcuapi.herokuapp.com/api/v1/movies?page=1&limit=10&columns=title%2Crelease_date%2Ccover_url&order=chronology%2CDESC&filter=title%3D"
+   + speak.replaceAll('"', '').split(" ").join("%20").split(":").join("%3A");
+
+
+  console.log(moviesAPI)
+    
+    fetch(moviesAPI).then(function (response){
+      if(response.ok){
+        response.json().then(function (data){
+          return data;
+        })
+        .then(function (data){
+          console.log(data);
+          let movieArt = document.createElement("img");
+          movieArt.setAttribute("src", data.data[0].cover_url)
+          console.log(data.data.title)
+          movieCover.appendChild(movieArt)
+        })
+      }
+    })
+
+}
+
+function displayShows(){
+  let speak = title
+  speak.replaceAll('"', '')
+  console.log(speak);
+  console.log(speak.split(" ").join("%20").split(":").join("%3A"))
+  const moviesAPI = "https://mcuapi.herokuapp.com/api/v1/tvshows?page=1&limit=10&columns=title%2Crelease_date%2Ccover_url&phase&order=release_date%2CDESC&filter=title%3D"
+   + speak.replaceAll('"', '').split(" ").join("%20").split(":").join("%3A");
 
 
   console.log(moviesAPI)
