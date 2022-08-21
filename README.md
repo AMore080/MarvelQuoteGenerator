@@ -11,4 +11,5 @@ A simple fun marvel quote generator that generates a random quote along with a m
 - Tailwind CSS Framework
 - GIPHY API
 - Marvel Quote Generator API (https://rapidapi.com/kyledeguzmanx/api/marvel-quote-api/)
+- MCUAPI (https://mcuapi.herokuapp.com/docs/)
 - Font Awesome 4
