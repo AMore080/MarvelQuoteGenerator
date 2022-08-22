@@ -5,6 +5,7 @@ let gif = document.querySelector("#gif")
 let movieCover = document.querySelector(".movie-cover")
 
 
+//Fetches the quote API and distributes info to displayMovies/displayShows
 var renderQuote = function () {
   var options = {
     method: "GET",
@@ -40,7 +41,8 @@ var renderQuote = function () {
 };
 
 
-
+// Gets a parameter from renderquote and matches the speaker to a randomized gif
+// from the giphyAPI using link parameters
 function handleRandomGif(){
   let speak = speaker
   
@@ -66,7 +68,8 @@ function handleRandomGif(){
     })
 }
 
-
+//Both functions displayMovies and displayShows will receive the title from the quote API
+// and use it as a parameter in the MCU API to display a movie/show cover 
 function displayMovies(){
   let speak = title
   speak.replaceAll('"', '')
@@ -123,6 +126,7 @@ function displayShows(){
 
 }
 
+//runs the renderQuote function which sets off the rest
 renderQuote();
 
 //Refresh button
